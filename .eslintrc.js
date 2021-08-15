@@ -21,15 +21,17 @@ module.exports = {
   plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"],
   rules: {
     "react/jsx-filename-extension": ["warn", { extensions: [".tsx", ".ts"] }],
+    "import/prefer-default-export": "off",
     "import/no-unresolved": "error",
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "max-len": ["warn", { code: 80 }],
-    "@typescript-eslint/explicit-function-return-type": [
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "prettier/prettier": [
       "error",
       {
-        allowExpressions: true,
+        endOfLine: "auto",
       },
     ],
     "no-shadow": "off",

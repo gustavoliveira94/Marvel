@@ -1,7 +1,25 @@
+/* eslint-disable no-console */
+import { useEffect } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import { getCharacters } from "services/apis/marvel";
+
 const Home: NextPage = () => {
+  const charactes = async () => {
+    try {
+      const data = await getCharacters();
+
+      return data;
+    } catch (e) {
+      return console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    charactes();
+  }, []);
+
   return (
     <div>
       <Head>
