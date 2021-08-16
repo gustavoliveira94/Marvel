@@ -26,8 +26,9 @@ module.exports = {
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "max-len": ["warn", { code: 80 }],
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "@next/next/no-img-element": "off",
     "prettier/prettier": [
       "error",
       {
