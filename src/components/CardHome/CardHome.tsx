@@ -18,9 +18,11 @@ const CardHome: React.FC<ICardHome> = ({ name, image, url }) => {
       container
       justifyContent="center"
       className={classes.container}
+      data-testid="card"
+      item
     >
       <Link href={url}>
-        <a className={classes.link}>
+        <a className={classes.link} data-testid="card-link">
           <Card className={classes.card}>
             <figure className={classes.figure}>
               <img
