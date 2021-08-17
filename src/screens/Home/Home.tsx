@@ -26,10 +26,16 @@ const cards = [
 const HomeScreen: React.FC = () => {
   return (
     <Container>
-      <Grid md={12} container direction="row" justifyContent="center">
+      <Grid md={12} item container direction="row" justifyContent="center">
         <h1>Explore:</h1>
       </Grid>
-      <Grid md={12} container direction="row" justifyContent="center">
+      <Grid
+        md={12}
+        container
+        direction="row"
+        justifyContent="center"
+        data-testid="content-cards"
+      >
         {cards.map((card) => (
           <CardHome
             key={card.name}

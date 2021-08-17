@@ -13,7 +13,7 @@ describe("Testing Component <CardHome />", () => {
     );
 
     expect(getByText("Loki")).toBeInTheDocument();
-    expect(getByTestId("link").href).toEqual("http://loki.com/");
+    expect(getByTestId("card-link").href).toEqual("http://loki.com/");
     expect(getByRole("img").src).toEqual(
       "https://i.annihil.us/u/prod/marvel/i/mg/f/20/60e5e1d1b5fde/portrait_uncanny.jpg"
     );
