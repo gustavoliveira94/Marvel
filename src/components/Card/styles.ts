@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     padding: 20,
   },
   card: {
-    width: "100%",
+    width: 280,
   },
   link: {
     textDecoration: "none",
@@ -28,6 +28,7 @@ const useStyles = makeStyles(() => ({
   },
   title: {
     margin: 0,
+    marginBottom: 10,
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",

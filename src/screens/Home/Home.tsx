@@ -1,6 +1,6 @@
 import { Grid, Container } from "@material-ui/core";
 
-import CardHome from "components/CardHome";
+import CardHome from "components/Card";
 
 const cards = [
   {
@@ -35,6 +35,7 @@ const HomeScreen: React.FC = () => {
         direction="row"
         justifyContent="center"
         data-testid="content-cards"
+        item
       >
         {cards.map((card) => (
           <CardHome

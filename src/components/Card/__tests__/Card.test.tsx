@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react";
 
-import CardHome from "../CardHome";
+import Card from "../Card";
 
 describe("Testing Component <CardHome />", () => {
   it("Check render props", () => {
     const { getByText, getByTestId, getByRole } = render(
-      <CardHome
+      <Card
         name="Loki"
         url="http://loki.com"
         image="https://i.annihil.us/u/prod/marvel/i/mg/f/20/60e5e1d1b5fde/portrait_uncanny.jpg"
