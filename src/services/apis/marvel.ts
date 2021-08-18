@@ -107,13 +107,27 @@ export const { getComics, getComicId } = comics;
 export interface ISeries {
   id: number;
   title: string;
+  description: string;
   thumbnail: {
     path: string;
     extension: string;
   };
-  startYear: number;
-  endYear: number;
-  rating: string;
+  creators: {
+    items: {
+      name: string;
+      role: string;
+    }[];
+  };
+  characters: {
+    items: {
+      name: string;
+    }[];
+  };
+  stories: {
+    items: {
+      name: string;
+    }[];
+  };
 }
 
 const series = {
@@ -126,11 +140,11 @@ const series = {
       return console.error(e);
     }
   },
-  getSeriesId: async (id: number) => {
+  getSeriesId: async (id: string) => {
     try {
       const { data } = await marvelApi.get(`/v1/public/series/${id}`);
 
-      return data?.data?.results as ISeries;
+      return data?.data?.results as ISeries[];
     } catch (e) {
       return console.error(e);
     }
