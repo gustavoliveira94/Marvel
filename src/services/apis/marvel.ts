@@ -54,30 +54,39 @@ const characters = {
 
 export const { getCharacterId, getCharacters } = characters;
 
-type IStories = ICharacters;
+export interface IComics {
+  id: number;
+  title: string;
+  description: string;
+  urls: string[];
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+}
 
-const stories = {
-  getStories: async () => {
+const comics = {
+  getComics: async () => {
     try {
-      const { data } = await marvelApi.get("/v1/public/stories");
+      const { data } = await marvelApi.get("/v1/public/comics");
 
-      return data?.results as IStories[];
+      return data?.data?.results as IComics[];
     } catch (e) {
       return console.error(e);
     }
   },
-  getStoryId: async (id: number) => {
+  getComicId: async (id: number) => {
     try {
-      const { data } = await marvelApi.get(`/v1/public/stories/${id}`);
+      const { data } = await marvelApi.get(`/v1/public/comics/${id}`);
 
-      return data?.results as IStories;
+      return data?.results as IComics;
     } catch (e) {
       return console.error(e);
     }
   },
 };
 
-export const { getStories, getStoryId } = stories;
+export const { getComics, getComicId } = comics;
 
 export interface ISeries {
   id: number;
