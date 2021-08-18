@@ -1,20 +1,20 @@
 import { Grid, Container } from "@material-ui/core";
 
-import { IComics } from "services/apis/marvel";
+import { ICharacters } from "services/apis/marvel";
 
 import useStyles from "./styles";
 
-export interface IComicPage {
-  comic: IComics;
+export interface ICharacterPage {
+  character: ICharacters;
 }
 
-const Comic: React.FC<IComicPage> = ({ comic }) => {
+const Character: React.FC<ICharacterPage> = ({ character }) => {
   const classes = useStyles();
 
   const image =
-    comic?.thumbnail?.path !==
+    character?.thumbnail?.path !==
     "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-      ? `${comic?.thumbnail?.path}.${comic?.thumbnail?.extension}`
+      ? `${character?.thumbnail?.path}.${character?.thumbnail?.extension}`
       : "/marvel-avatar.jpg";
 
   return (
@@ -29,39 +29,38 @@ const Comic: React.FC<IComicPage> = ({ comic }) => {
           alignItems="flex-start"
           className={classes.image}
         >
-          <img src={image} alt={comic?.title} width="100%" />
+          <img src={image} alt={character?.name} width="100%" />
         </Grid>
         <Grid md={8} item container direction="row" alignItems="flex-start">
           <Grid md={12} item container direction="row" alignItems="flex-start">
-            <h2>{comic?.title}</h2>
-            {comic?.description && <p>{comic?.description}</p>}
+            <h2>{character?.name}</h2>
+            {character?.description && <p>{character?.description}</p>}
           </Grid>
           <Grid md={12} item container direction="row" alignItems="flex-start">
-            {comic?.creators?.items.length ? (
+            {character?.comics?.items.length ? (
               <Grid md={4} item direction="column">
-                <h3>Criadores:</h3>
-                {comic?.creators?.items.map((creator) => (
+                <h3>Histórias em quadrinhos:</h3>
+                {character?.comics?.items.map((creator) => (
                   <div key={creator?.name}>
                     <p>{creator.name}</p>
-                    <p>{creator.role}</p>
                   </div>
                 ))}
               </Grid>
             ) : null}
-            {comic?.characters?.items.length ? (
+            {character?.series?.items.length ? (
               <Grid md={4} item direction="column">
-                <h3>Personagens:</h3>
-                {comic?.characters?.items.map((character) => (
-                  <div key={character?.name}>
-                    <p>{character.name}</p>
+                <h3>Séries:</h3>
+                {character?.series?.items.map(({ name }) => (
+                  <div key={name}>
+                    <p>{name}</p>
                   </div>
                 ))}
               </Grid>
             ) : null}
-            {comic?.stories?.items.length ? (
+            {character?.stories?.items.length ? (
               <Grid md={4} item direction="column">
                 <h3>Histórias:</h3>
-                {comic?.stories?.items.map((story) => (
+                {character?.stories?.items.map((story) => (
                   <div key={story?.name}>
                     <p>{story.name}</p>
                   </div>
@@ -75,4 +74,4 @@ const Comic: React.FC<IComicPage> = ({ comic }) => {
   );
 };
 
-export default Comic;
+export default Character;
