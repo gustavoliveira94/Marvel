@@ -40,7 +40,9 @@ const Card: React.FC<ICardHome> = ({ name, image, url }) => {
               />
             </figure>
             <div className={classes.contentTitle}>
-              <p className={classes.title}>{name}</p>
+              <p title={name} className={classes.title}>
+                {name}
+              </p>
             </div>
           </Cards>
         </a>

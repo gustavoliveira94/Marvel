@@ -16,8 +16,8 @@ const cards = [
       "https://terrigen-cdn-dev.marvel.com/content/prod/1x/wandavision_lob_crd_06.jpg",
   },
   {
-    name: "Histórias",
-    url: "/stories",
+    name: "Histórias em quadrinhos",
+    url: "/comics",
     image_url:
       "https://i.annihil.us/u/prod/marvel/i/mg/f/20/60e5e1d1b5fde/portrait_uncanny.jpg",
   },

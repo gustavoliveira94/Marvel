@@ -1,18 +1,18 @@
 import { Grid, Container } from "@material-ui/core";
 
-import { ICharacters } from "services/apis/marvel";
-
 import Card from "components/Card";
 
-export interface ICharactersPage {
-  characters: ICharacters[];
+import { IComics } from "services/apis/marvel";
+
+export interface IComicsPage {
+  comics: IComics[];
 }
 
-const Characters: React.FC<ICharactersPage> = ({ characters }) => {
+const Stories: React.FC<IComicsPage> = ({ comics }) => {
   return (
     <Container>
       <Grid md={12} item container direction="row" justifyContent="center">
-        <h1>Personagens:</h1>
+        <h1>Histórias em quadrinhos:</h1>
       </Grid>
       <Grid
         md={12}
@@ -22,15 +22,15 @@ const Characters: React.FC<ICharactersPage> = ({ characters }) => {
         justifyContent="center"
         data-testid="content-cards"
       >
-        {characters.map(({ id, name, thumbnail }) => {
-          const titleFormat = name.length <= 70 ? name : name.slice(0, 75);
+        {comics.map(({ id, title, thumbnail }) => {
+          const titleFormat = title.length <= 70 ? title : title.slice(0, 75);
 
           return (
             <Card
               key={id}
-              image={`${thumbnail.path}.${thumbnail.extension}`}
+              image={`${thumbnail?.path}.${thumbnail?.extension}`}
               name={titleFormat}
-              url={`character/${id}`}
+              url={`comic/${id}`}
             />
           );
         })}
@@ -39,4 +39,4 @@ const Characters: React.FC<ICharactersPage> = ({ characters }) => {
   );
 };
 
-export default Characters;
+export default Stories;

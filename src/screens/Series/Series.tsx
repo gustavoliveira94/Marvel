@@ -22,14 +22,18 @@ const Series: React.FC<ISeriesPage> = ({ series }) => {
         justifyContent="center"
         data-testid="content-cards"
       >
-        {series.map(({ id, title, thumbnail }) => (
-          <Card
-            key={id}
-            image={`${thumbnail.path}.${thumbnail.extension}`}
-            name={title}
-            url={`serie/${id}`}
-          />
-        ))}
+        {series.map(({ id, title, thumbnail }) => {
+          const titleFormat = title.length <= 70 ? title : title.slice(0, 75);
+
+          return (
+            <Card
+              key={id}
+              image={`${thumbnail.path}.${thumbnail.extension}`}
+              name={titleFormat}
+              url={`serie/${id}`}
+            />
+          );
+        })}
       </Grid>
     </Container>
   );
