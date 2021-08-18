@@ -18,12 +18,25 @@ export interface ICharacters {
   id: number;
   name: string;
   description: string;
-  modified: Date;
-  resourceURI: string;
-  urls: string[];
   thumbnail: {
     path: string;
     extension: string;
+  };
+  series: {
+    items: {
+      name: string;
+      role: string;
+    }[];
+  };
+  comics: {
+    items: {
+      name: string;
+    }[];
+  };
+  stories: {
+    items: {
+      name: string;
+    }[];
   };
 }
 
@@ -39,13 +52,13 @@ const characters = {
       return console.error(e);
     }
   },
-  getCharacterId: async (id: number) => {
+  getCharacterId: async (id: string) => {
     try {
       const {
         data: { data },
       } = await marvelApi.get(`/v1/public/characters/${id}`);
 
-      return data?.results as ICharacters;
+      return data?.results as ICharacters[];
     } catch (e) {
       return console.error(e);
     }
@@ -58,7 +71,6 @@ export interface IComics {
   id: number;
   title: string;
   description: string;
-  urls: string[];
   thumbnail: {
     path: string;
     extension: string;
