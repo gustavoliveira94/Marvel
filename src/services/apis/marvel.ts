@@ -1,22 +1,30 @@
 /* eslint-disable no-console */
 import { request } from "services/request";
 
+const timestamp = "fsadsa";
+const apiKey = process.env.NEXT_PUBLIC_API_KEY_MARVEL;
+const hash = "4bb7d6a9f8edfa2c46f2dd30f79d7f9c";
+
 const marvelApi = request({
-  baseURL: process.env.API_URL_MARVEL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL_MARVEL,
   params: {
-    apikey: process.env.API_KEY_MARVEL,
-    hash: process.env.HASH_MARVEL,
+    ts: timestamp,
+    apikey: apiKey,
+    hash,
   },
 });
 
-interface ICharacters {
+export interface ICharacters {
   id: number;
   name: string;
   description: string;
   modified: Date;
   resourceURI: string;
   urls: string[];
-  thumbnail: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
 }
 
 const characters = {

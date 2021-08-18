@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Grid, Card } from "@material-ui/core";
+import { Grid, Card as Cards } from "@material-ui/core";
 
 import useStyles from "./styles";
 
@@ -7,9 +7,10 @@ interface ICardHome {
   name: string;
   image: string;
   url: string;
+  description?: string;
 }
 
-const CardHome: React.FC<ICardHome> = ({ name, image, url }) => {
+const Card: React.FC<ICardHome> = ({ name, image, url }) => {
   const classes = useStyles();
 
   return (
@@ -23,7 +24,7 @@ const CardHome: React.FC<ICardHome> = ({ name, image, url }) => {
     >
       <Link href={url}>
         <a className={classes.link} data-testid="card-link">
-          <Card className={classes.card}>
+          <Cards className={classes.card}>
             <figure className={classes.figure}>
               <img
                 className={classes.avatar}
@@ -36,11 +37,11 @@ const CardHome: React.FC<ICardHome> = ({ name, image, url }) => {
             <div className={classes.contentTitle}>
               <p className={classes.title}>{name}</p>
             </div>
-          </Card>
+          </Cards>
         </a>
       </Link>
     </Grid>
   );
 };
 
-export default CardHome;
+export default Card;
