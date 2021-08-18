@@ -63,6 +63,22 @@ export interface IComics {
     path: string;
     extension: string;
   };
+  creators: {
+    items: {
+      name: string;
+      role: string;
+    }[];
+  };
+  characters: {
+    items: {
+      name: string;
+    }[];
+  };
+  stories: {
+    items: {
+      name: string;
+    }[];
+  };
 }
 
 const comics = {
@@ -75,11 +91,11 @@ const comics = {
       return console.error(e);
     }
   },
-  getComicId: async (id: number) => {
+  getComicId: async (id: string) => {
     try {
       const { data } = await marvelApi.get(`/v1/public/comics/${id}`);
 
-      return data?.results as IComics;
+      return data?.data?.results as IComics[];
     } catch (e) {
       return console.error(e);
     }
