@@ -14,7 +14,7 @@ export const getStaticProps: GetServerSideProps = async () => {
   try {
     const characters = await getCharacters();
 
-    if (!characters) {
+    if (!characters?.length) {
       throw new Error("Characters not found!");
     }
 

@@ -28,7 +28,12 @@ const Card: React.FC<ICardHome> = ({ name, image, url }) => {
             <figure className={classes.figure}>
               <img
                 className={classes.avatar}
-                src={image}
+                src={
+                  image !==
+                  "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+                    ? image
+                    : "/marvel-avatar.jpg"
+                }
                 alt={name}
                 width="100%"
                 height="100%"

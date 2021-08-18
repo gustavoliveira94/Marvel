@@ -79,7 +79,13 @@ const stories = {
 
 export const { getStories, getStoryId } = stories;
 
-interface ISeries extends ICharacters {
+export interface ISeries {
+  id: number;
+  title: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
   startYear: number;
   endYear: number;
   rating: string;
@@ -90,7 +96,7 @@ const series = {
     try {
       const { data } = await marvelApi.get("/v1/public/series");
 
-      return data?.results as ISeries[];
+      return data?.data?.results as ISeries[];
     } catch (e) {
       return console.error(e);
     }
@@ -99,7 +105,7 @@ const series = {
     try {
       const { data } = await marvelApi.get(`/v1/public/series/${id}`);
 
-      return data?.results as ISeries;
+      return data?.data?.results as ISeries;
     } catch (e) {
       return console.error(e);
     }
