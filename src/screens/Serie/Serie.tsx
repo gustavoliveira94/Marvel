@@ -2,6 +2,8 @@ import { Grid, Container } from "@material-ui/core";
 
 import { ISeries } from "services/apis/marvel";
 
+import Entities from "components/Entities";
+
 import useStyles from "./styles";
 
 export interface ISeriePage {
@@ -37,37 +39,9 @@ const Serie: React.FC<ISeriePage> = ({ serie }) => {
             {serie?.description && <p>{serie?.description}</p>}
           </Grid>
           <Grid md={12} item container direction="row" alignItems="flex-start">
-            {serie?.creators?.items.length ? (
-              <Grid md={4} item direction="column">
-                <h3>Criadores:</h3>
-                {serie?.creators?.items.map((creator) => (
-                  <div key={creator?.name}>
-                    <p>{creator.name}</p>
-                    <p>{creator.role}</p>
-                  </div>
-                ))}
-              </Grid>
-            ) : null}
-            {serie?.characters?.items.length ? (
-              <Grid md={4} item direction="column">
-                <h3>Personagens:</h3>
-                {serie?.characters?.items.map((character) => (
-                  <div key={character?.name}>
-                    <p>{character.name}</p>
-                  </div>
-                ))}
-              </Grid>
-            ) : null}
-            {serie?.stories?.items.length ? (
-              <Grid md={4} item direction="column">
-                <h3>Histórias:</h3>
-                {serie?.stories?.items.map((story) => (
-                  <div key={story?.name}>
-                    <p>{story.name}</p>
-                  </div>
-                ))}
-              </Grid>
-            ) : null}
+            <Entities entity={serie?.creators?.items} title="Criadores:" />
+            <Entities entity={serie?.characters?.items} title="Personagens:" />
+            <Entities entity={serie?.stories?.items} title="Histórias:" />
           </Grid>
         </Grid>
       </Grid>

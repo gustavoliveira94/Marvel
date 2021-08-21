@@ -1,11 +1,11 @@
-import { render } from "@testing-library/react";
+import { render } from '@testing-library/react';
 
-import Header from "../Header";
+import Header from '../Header';
 
-describe("Testing component <Header />", () => {
-  it("render correctly", () => {
+describe('Testing component <Header />', () => {
+  it('render correctly', () => {
     const { getByRole } = render(<Header />);
 
-    expect(getByRole("img")).toBeInTheDocument();
+    expect(getByRole('img')).toBeInTheDocument();
   });
 });

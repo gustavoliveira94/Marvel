@@ -1,10 +1,10 @@
-import type { NextPage, GetServerSideProps } from "next";
+import type { NextPage, GetServerSideProps } from 'next';
 
-import { getCharacters } from "services/apis/marvel";
+import { getCharacters } from 'services/apis/marvel';
 
 import CharactersScreen, {
   ICharactersPage,
-} from "screens/Characters/Characters";
+} from 'screens/Characters/Characters';
 
 const Characters: NextPage<ICharactersPage> = ({ characters }) => {
   return <CharactersScreen characters={characters} />;
@@ -15,7 +15,7 @@ export const getStaticProps: GetServerSideProps = async () => {
     const characters = await getCharacters();
 
     if (!characters?.length) {
-      throw new Error("Characters not found!");
+      throw new Error('Characters not found!');
     }
 
     return {

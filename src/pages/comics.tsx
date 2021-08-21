@@ -1,8 +1,8 @@
-import type { NextPage, GetServerSideProps } from "next";
+import type { NextPage, GetServerSideProps } from 'next';
 
-import { getComics } from "services/apis/marvel";
+import { getComics } from 'services/apis/marvel';
 
-import Comicscreen, { IComicsPage } from "screens/Comics/Comics";
+import Comicscreen, { IComicsPage } from 'screens/Comics/Comics';
 
 const Stories: NextPage<IComicsPage> = ({ comics }) => {
   return <Comicscreen comics={comics} />;
@@ -13,7 +13,7 @@ export const getStaticProps: GetServerSideProps = async () => {
     const comics = await getComics();
 
     if (!comics?.length) {
-      throw new Error("Comics not found!");
+      throw new Error('Comics not found!');
     }
 
     return {

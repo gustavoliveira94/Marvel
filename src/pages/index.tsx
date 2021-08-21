@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import { useEffect } from "react";
-import type { NextPage } from "next";
+import { useEffect } from 'react';
+import type { NextPage } from 'next';
 
-import { getCharacters } from "services/apis/marvel";
+import { getCharacters } from 'services/apis/marvel';
 
-import HomeScreen from "screens/Home/Home";
+import HomeScreen from 'screens/Home/Home';
 
 const Home: NextPage = () => {
   const charactes = async () => {
