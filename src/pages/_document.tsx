@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Children } from "react";
+import { Children } from 'react';
 import Document, {
   DocumentContext,
   Html,
   Head,
   Main,
   NextScript,
-} from "next/document";
-import { ServerStyleSheets } from "@material-ui/core/styles";
+} from 'next/document';
+import { ServerStyleSheets } from '@material-ui/core/styles';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

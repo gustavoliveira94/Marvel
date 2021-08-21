@@ -1,20 +1,37 @@
-import type { NextPage, GetServerSideProps, GetStaticPaths } from "next";
+import type { NextPage, GetServerSideProps, GetStaticPaths } from 'next';
 
-import { getComicId } from "services/apis/marvel";
+import { getComicId, getComics } from 'services/apis/marvel';
 
-import ComicScreen from "screens/Comic";
+import ComicScreen from 'screens/Comic';
 
-import { IComicPage } from "screens/Comic/Comic";
+import { IComicPage } from 'screens/Comic/Comic';
 
 const Comic: NextPage<IComicPage> = ({ comic }) => {
   return <ComicScreen comic={comic} />;
 };
 
-export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
+export const getStaticPaths: GetStaticPaths = async () => {
+  try {
+    const comics = await getComics();
+
+    if (!comics?.length) {
+      throw new Error('Comics not found!');
+    }
+
+    const paths = comics.map(({ id }) => ({
+      params: { id: String(id) },
+    }));
+
+    return {
+      paths,
+      fallback: true,
+    };
+  } catch (e) {
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
 };
 
 export const getStaticProps: GetServerSideProps = async ({ params }) => {
@@ -22,7 +39,7 @@ export const getStaticProps: GetServerSideProps = async ({ params }) => {
     const comic = await getComicId(params?.id as string);
 
     if (!comic?.length) {
-      throw new Error("Characters not found!");
+      throw new Error('Comic not found!');
     }
 
     return {

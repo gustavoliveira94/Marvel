@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid } from '@material-ui/core';
 
 interface IEntity {
   entity: {
@@ -9,8 +9,8 @@ interface IEntity {
 }
 
 const Entities: React.FC<IEntity> = ({ entity, title }) =>
-  entity.length ? (
-    <Grid md={4} item direction="column">
+  entity?.length ? (
+    <Grid md={4} item data-testid="entities">
       <h3>{title}</h3>
       {entity?.map(({ name, role }) => (
         <div key={name}>

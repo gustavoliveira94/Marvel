@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import type { AppProps } from "next/app";
-import Head from "next/head";
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
 
-import Header from "components/Header";
+import Header from 'components/Header';
 
-import "styles/global.css";
+import 'styles/global.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

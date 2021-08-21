@@ -1,12 +1,12 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   container: {
-    backgroundColor: "#202020",
+    backgroundColor: '#202020',
   },
   logo: {
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
   },
 }));
 

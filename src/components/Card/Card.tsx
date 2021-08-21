@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { Grid, Card as Cards } from "@material-ui/core";
+import Link from 'next/link';
+import { Grid, Card as Cards } from '@material-ui/core';
 
-import useStyles from "./styles";
+import useStyles from './styles';
 
 interface ICardHome {
   name: string;
@@ -30,9 +30,9 @@ const Card: React.FC<ICardHome> = ({ name, image, url }) => {
                 className={classes.avatar}
                 src={
                   image !==
-                  "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+                  'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
                     ? image
-                    : "/marvel-avatar.jpg"
+                    : '/marvel-avatar.jpg'
                 }
                 alt={name}
                 width="100%"

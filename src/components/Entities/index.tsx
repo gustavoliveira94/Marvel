@@ -1,1 +1,1 @@
-export { default } from "./Entities";
+export { default } from './Entities';
