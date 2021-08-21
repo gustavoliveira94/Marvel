@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { request } from "services/request";
 
-const timestamp = "fsadsa";
+const timestamp = process.env.NEXT_PUBLIC_TS_MARVEL;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY_MARVEL;
-const hash = "4bb7d6a9f8edfa2c46f2dd30f79d7f9c";
+const hash = process.env.NEXT_PUBLIC_HASH_MARVEL;
 
 const marvelApi = request({
   baseURL: process.env.NEXT_PUBLIC_API_URL_MARVEL,
